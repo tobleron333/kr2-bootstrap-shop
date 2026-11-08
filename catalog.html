@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог квестов — QuestRoom</title>
+  <meta name="description" content="Каталог квестов QuestRoom: хоррор, детектив, космос, побег.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-light">
+
+  <!-- Навигация (та же, что в index.html) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">QuestRoom</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="catalog.html">Каталог</a></li>
+          <li class="nav-item"><a class="nav-link" href="product.html">Квест</a></li>
+          <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="alert alert-info" role="alert">
+      Выберите квест из каталога. Карточки оформлены компонентом Bootstrap <code>card</code>.
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h2 mb-0">Каталог квестов</h1>
+      <a class="btn btn-outline-primary" href="order.html">Оставить заявку</a>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h2 class="card-title h5 mb-0">Побег из лаборатории</h2>
+              <span class="badge bg-success">Новинка</span>
+            </div>
+            <p class="card-text text-muted">Хоррор. Учёный исчез, лаборатория закрыта. 60 минут, 2–4 человека.</p>
+            <p class="fw-bold fs-5 mt-auto">2500 руб.</p>
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="product.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h2 class="card-title h5 mb-0">Тайна старого особняка</h2>
+              <span class="badge bg-warning text-dark">Хит</span>
+            </div>
+            <p class="card-text text-muted">Детектив. Найдите убийцу до полуночи. 70 минут, 4–6 человек.</p>
+            <p class="fw-bold fs-5 mt-auto">3000 руб.</p>
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="product.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h2 class="card-title h5 mb-0">Космический рейс</h2>
+              <span class="badge bg-danger">Скидка</span>
+            </div>
+            <p class="card-text text-muted">Фантастика. Вернитесь на Землю до конца кислорода. 60 минут, 2–5 человек.</p>
+            <p class="fw-bold fs-5 mt-auto">2800 руб.</p>
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="product.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h2 class="card-title h5 mb-3">Заброшенный лагерь</h2>
+            <p class="card-text text-muted">Хоррор. Ночь в лесу, странные звуки, пропавшие дети. 80 минут, 3–6 человек.</p>
+            <p class="fw-bold fs-5 mt-auto">3200 руб.</p>
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="product.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h2 class="card-title h5 mb-3">Ограбление банка</h2>
+            <p class="card-text text-muted">Экшн. Проберитесь в хранилище и выйдите до приезда полиции. 60 минут, 2–4 человека.</p>
+            <p class="fw-bold fs-5 mt-auto">2600 руб.</p>
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="product.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h2 class="card-title h5 mb-3">Пиратский остров</h2>
+            <p class="card-text text-muted">Приключение для детей и взрослых. Найдите сокровища. 60 минут, 2–6 человек.</p>
+            <p class="fw-bold fs-5 mt-auto">2400 руб.</p>
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="product.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <p class="mb-0 text-center">&copy; 2026 QuestRoom. Учебный проект.</p>
+    </div>
+  </footer>
+
+  <!-- Модальное окно -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="orderModalLabel">Быстрая заявка</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted">Оставьте контактные данные, и мы свяжемся с вами.</p>
+          <form>
+            <div class="mb-3">
+              <label for="modal-name" class="form-label">Имя</label>
+              <input id="modal-name" type="text" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="modal-phone" class="form-label">Телефон</label>
+              <input id="modal-phone" type="tel" class="form-control" required>
+            </div>
+            <div class="form-check mb-3">
+              <input id="modal-agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="modal-agree">Согласен на обработку данных</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-primary">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
