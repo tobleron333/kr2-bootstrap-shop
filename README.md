@@ -18,10 +18,7 @@ Bootstrap 5.3.3.
 
 ## Способ подключения
 
-Bootstrap подключён через CDN (jsdelivr):
-
-- CSS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css`
-- JS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js`
+Bootstrap подключён **локально**. Файлы фреймворка размещены в папке `vendor/bootstrap/`.
 
 ## Структура проекта
 
