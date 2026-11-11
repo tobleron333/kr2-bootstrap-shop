@@ -1,141 +1,242 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuestRoom - квесты в Москве</title>
-  <meta name="description" content="QuestRoom - учебный сайт квест-комнат. Выбери квест и запишись на прохождение.">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>QuestRoom — квесты в Москве</title>
+  <meta name="description" content="QuestRoom — сеть квест-комнат в Москве. Девять сценариев: хоррор, детективы, фантастика и приключения. Оставьте заявку онлайн.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
 
   <!-- Шапка -->
-  <header class="bg-primary text-white py-4">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-8">
-          <h1 class="h3 mb-1">QuestRoom</h1>
-          <p class="mb-0 opacity-75">Квесты в Москве - выбери свой сценарий</p>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg site-nav" aria-label="Основная навигация">
+      <div class="container navbar-container">
+
+        <a class="navbar-brand" href="index.html">
+          <img src="images/quest-logo-gold.png" class="brand-logo" alt="" width="36" height="36">
+          <span class="brand-text">
+            <span class="brand-name">QuestRoom</span>
+            <span class="brand-tagline">Не просто квест — твоя история</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">О нас</a></li>
+            <li class="nav-item"><a class="nav-link" href="certificates.html">Сертификаты</a></li>
+          </ul>
         </div>
+
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Навигация -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">QuestRoom</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
-          <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Дополнительно
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="index.html#about">О нас</a></li>
-              <li><a class="dropdown-item" href="index.html#contacts">Контакты</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
   <main>
+
     <!-- Hero -->
-    <section class="container my-5">
-      <div class="row align-items-center g-4">
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
 
-        <div class="col-12 col-lg-6">
-          <h2 class="display-5 fw-bold">Выбери свой квест</h2>
-          <p class="lead text-muted">
-            Более 6 сценариев: хоррор, детектив, космос, побег.
-            Команды от 2 до 6 человек. Опытные ведущие.
-          </p>
-          <a class="btn btn-primary btn-lg" href="catalog.html">Перейти в каталог</a>
-        </div>
+          <div class="col-12 col-lg-6">
+            <span class="hero-eyebrow">Квесты в Москве</span>
+            <h1 class="display-title">Выбери свой <span class="accent">квест</span></h1>
+            <p class="hero-subtitle">
+              Девять сценариев — от хоррора и детектива до космоса и детских приключений.
+              Команды от 2 до 6 человек, 60–80 минут игры и ведущий, который знает,
+              когда стоит подсказать.
+            </p>
 
-        <div class="col-12 col-lg-6">
-          <div class="card h-100 shadow-sm">
-           <img src="images/quest-logo.jpg" class="card-img-top" alt="Побег из лаборатории">
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="order.html">Оставить заявку</a>
+              <a class="btn btn-outline-primary btn-lg" href="catalog.html">Перейти в каталог</a>
+            </div>
+
+            <div class="hero-stats">
+              <div>
+                <strong>9</strong>
+                <span>сценариев</span>
+              </div>
+              <div>
+                <strong>2–6</strong>
+                <span>игроков в команде</span>
+              </div>
+              <div>
+                <strong>60–80</strong>
+                <span>минут на игру</span>
+              </div>
+            </div>
           </div>
-        </div>
 
+          <div class="col-12 col-lg-6">
+            <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="false">
+
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Квест «Побег из лаборатории»"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Квест «Тайна старого особняка»"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Квест «Космический рейс»"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Квест «Проклятие фараона»"></button>
+              </div>
+
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="images/quest-lab.jpg" class="d-block w-100" alt="Квест «Побег из лаборатории»">
+                  <div class="carousel-caption">
+                    <span class="badge bg-danger">Хоррор</span>
+                    <h2>Побег из лаборатории</h2>
+                    <p>60 минут · 2–4 игрока · 2 500 ₽</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="images/quest-mansion.jpg" class="d-block w-100" alt="Квест «Тайна старого особняка»">
+                  <div class="carousel-caption">
+                    <span class="badge bg-warning text-dark">Детектив</span>
+                    <h2>Тайна старого особняка</h2>
+                    <p>70 минут · 4–6 игроков · 3 000 ₽</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="images/quest-cosmo.jpg" class="d-block w-100" alt="Квест «Космический рейс»">
+                  <div class="carousel-caption">
+                    <span class="badge bg-info text-dark">Фантастика</span>
+                    <h2>Космический рейс</h2>
+                    <p>60 минут · 2–5 игроков · 2 800 ₽</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="images/quest-pharaoh.jpg" class="d-block w-100" alt="Квест «Проклятие фараона»">
+                  <div class="carousel-caption">
+                    <span class="badge bg-primary text-dark">Мистика</span>
+                    <h2>Проклятие фараона</h2>
+                    <p>75 минут · 4–6 игроков · 3 400 ₽</p>
+                  </div>
+                </div>
+              </div>
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий слайд</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий слайд</span>
+              </button>
+
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
     <!-- Преимущества -->
-    <section class="container my-5">
-      <h2 class="text-center mb-4">Почему QuestRoom</h2>
-      <div class="row g-4">
-        <div class="col-12 col-md-4">
-          <div class="p-4 border rounded h-100 bg-white">
-            <h3 class="h5">Много сценариев</h3>
-            <p class="mb-0 text-muted">Хоррор, детектив, космос, побег и детские квесты.</p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Почему мы</span>
+            <h2 class="section-title">Почему QuestRoom</h2>
           </div>
         </div>
-        <div class="col-12 col-md-4">
-          <div class="p-4 border rounded h-100 bg-white">
-            <h3 class="h5">Команды от 2 до 6 человек</h3>
-            <p class="mb-0 text-muted">Подходит для пар, друзей и корпоративов.</p>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-4 d-flex">
+            <div class="feature-card">
+              <span class="feature-number">01</span>
+              <h3>Девять сценариев</h3>
+              <p>Хоррор, детектив, космос, побег и детские квесты — есть из чего выбрать.</p>
+            </div>
           </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="p-4 border rounded h-100 bg-white">
-            <h3 class="h5">Удобная запись</h3>
-            <p class="mb-0 text-muted">Оставьте заявку на сайте - мы перезвоним.</p>
+          <div class="col-12 col-md-4 d-flex">
+            <div class="feature-card">
+              <span class="feature-number">02</span>
+              <h3>Команды от 2 до 6 человек</h3>
+              <p>Подходит для пар, друзей и корпоративов: подберём квест под ваш состав.</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 d-flex">
+            <div class="feature-card">
+              <span class="feature-number">03</span>
+              <h3>Удобная запись</h3>
+              <p>Оставьте заявку на сайте — менеджер перезвонит и подтвердит время.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Популярные квесты -->
-    <section class="container my-5">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">Популярные квесты</h2>
-        <a class="btn btn-outline-primary" href="catalog.html">Все квесты</a>
-      </div>
-      <div class="row g-4">
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <img src="images/quest-lab.jpg" class="card-img-top" alt="Побег из лаборатории">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-success mb-3 align-self-start">Новинка</span>
-              <h3 class="h5 card-title">Побег из лаборатории</h3>
-              <p class="card-text text-muted">Учёный исчез, лаборатория закрыта. У вас 60 минут, чтобы найти выход.</p>
-              <p class="fw-bold fs-5 mt-auto">2500 руб.</p>
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
+    <section class="section" id="popular">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Каталог</span>
+            <h2 class="section-title">Популярные квесты</h2>
+          </div>
+          <a class="btn btn-outline-primary" href="catalog.html">Все квесты</a>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-lab.jpg" class="card-img-top" alt="Квест «Побег из лаборатории»">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+                  <h3 class="h5 card-title mb-0">Побег из лаборатории</h3>
+                  <span class="badge bg-success">Новинка</span>
+                </div>
+                <p class="card-text text-muted">Учёный исчез, лаборатория закрыта. У вас 60 минут, чтобы найти выход.</p>
+                <span class="price mt-auto pt-3">2 500 ₽</span>
+                <a class="btn btn-primary w-100 mt-3" href="product.html?id=lab">Подробнее</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <img src="images/quest-mansion.jpg" class="card-img-top" alt="Тайна старого особняка">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-warning text-dark mb-3 align-self-start">Хит</span>
-              <h3 class="h5 card-title">Тайна старого особняка</h3>
-              <p class="card-text text-muted">Детектив в доме XIX века. Найдите убийцу до полуночи.</p>
-              <p class="fw-bold fs-5 mt-auto">3000 руб.</p>
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
+
+          <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-mansion.jpg" class="card-img-top" alt="Квест «Тайна старого особняка»">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+                  <h3 class="h5 card-title mb-0">Тайна старого особняка</h3>
+                  <span class="badge bg-warning text-dark">Хит</span>
+                </div>
+                <p class="card-text text-muted">Детектив в доме XIX века. Найдите убийцу до полуночи.</p>
+                <span class="price mt-auto pt-3">3 000 ₽</span>
+                <a class="btn btn-primary w-100 mt-3" href="product.html?id=mansion">Подробнее</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <img src="images/quest-cosmo.jpg" class="card-img-top" alt="Космический рейс">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-danger mb-3 align-self-start">Скидка</span>
-              <h3 class="h5 card-title">Космический рейс</h3>
-              <p class="card-text text-muted">Корабль сбился с курса. Вернитесь на Землю, пока не кончился кислород.</p>
-              <p class="fw-bold fs-5 mt-auto">2800 руб.</p>
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
+
+          <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-cosmo.jpg" class="card-img-top" alt="Квест «Космический рейс»">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+                  <h3 class="h5 card-title mb-0">Космический рейс</h3>
+                  <span class="badge bg-danger">Скидка</span>
+                </div>
+                <p class="card-text text-muted">Корабль сбился с курса. Вернитесь на Землю, пока не кончился кислород.</p>
+                <span class="price mt-auto pt-3">2 800 ₽</span>
+                <a class="btn btn-primary w-100 mt-3" href="product.html?id=cosmo">Подробнее</a>
+              </div>
             </div>
           </div>
         </div>
@@ -143,73 +244,108 @@
     </section>
 
     <!-- О компании -->
-    <section class="container my-5" id="about">
-      <h2 class="text-center mb-4">О компании</h2>
-      <div class="row g-4 justify-content-center">
-        <div class="col-12 col-lg-8 text-center">
-          <p class="lead">
-            QuestRoom - это сеть квест-комнат в Москве. Мы создаём различные сценарии: для тех, кто хочет пощекотать нервы, у нас есть отдельные квесты с элементами хоррора, а для тех, кто предпочитает спокойное приключение - детективы, фантастика и детские сценарии.
-          </p>
-          <p class="text-muted">
-            Наша команда: сценаристы, актёры и инженеры - работает над тем,
-            чтобы каждый квест был не просто игрой, а настоящим приключением.
-            Мы гордимся тем, что наши гости возвращаются снова и приводят друзей.
-          </p>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+
+          <div class="col-12 col-lg-6">
+            <div class="about-media">
+              <img src="images/quest-camp.jpg" alt="Квест-комната «Заброшенный лагерь»">
+              <div class="about-media-caption">
+                <strong>9 сценариев</strong>
+                <span>Хоррор, детектив, фантастика, экшн и приключения</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <span class="section-kicker">О компании</span>
+            <h2 class="section-title">Команда, которая придумывает истории</h2>
+            <p class="section-lead">
+              QuestRoom — это сеть квест-комнат в Москве. Мы создаём различные сценарии:
+              для тех, кто хочет пощекотать нервы, у нас есть квесты с элементами хоррора,
+              а для спокойного приключения — детективы, фантастика и детские сценарии.
+            </p>
+            <ul class="check-list">
+              <li>Авторские сценарии и декорации, а не типовые комнаты</li>
+              <li>Ведущие-актёры, которые держат темп игры</li>
+              <li>Три локации в Москве и команды от 2 до 6 человек</li>
+            </ul>
+            <a class="btn btn-outline-primary" href="about.html">Подробнее о нас</a>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Контакты -->
-    <section class="container my-5" id="contacts">
-      <h2 class="text-center mb-4">Контакты</h2>
-      <div class="row g-4">
-        <div class="col-12 col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3 class="h5">📍Адрес</h3>
-              <p class="mb-0 text-muted">г. Москва, ул. Лебедянская, д. 21</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3 class="h5">📞Телефон</h3>
-              <p class="mb-0 text-muted">+7 (916) 907-02-87</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body text-center">
-              <h3 class="h5"> 📬E-mail</h3>
-              <p class="mb-0 text-muted">info@questroom.ru</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- Подвал -->
-  <footer class="bg-dark text-white py-4 mt-5">
+  <footer class="site-footer">
     <div class="container">
-      <div class="row align-items-center g-3">
-        <div class="col-12 col-md-6">
-          <p class="mb-0">&copy; 2026 QuestRoom</p>
+      <div class="row g-4 g-lg-4">
+
+        <div class="col-12 col-lg-4">
+          <a class="footer-brand" href="index.html">
+            <img src="images/quest-logo-gold.png" alt="" width="42" height="42">
+            <span class="brand-name">QuestRoom</span>
+          </a>
+          <p class="footer-slogan">Не просто квест — твоя история</p>
+          <p class="footer-text">
+            Сеть квест-комнат в Москве: девять сценариев, команды от 2 до 6 человек
+            и ведущие, которые знают, когда стоит подсказать.
+          </p>
+          <a class="btn btn-primary" href="order.html">Оставить заявку</a>
         </div>
+
+        <div class="col-6 col-lg-2">
+          <h2 class="footer-title">Квесты</h2>
+          <ul class="footer-links">
+            <li><a href="catalog.html">Все квесты</a></li>
+            <li><a href="index.html#popular">Популярные</a></li>
+            <li><a href="certificates.html">Сертификаты</a></li>
+            <li><a href="about.html">О нас</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h2 class="footer-title">Информация</h2>
+          <ul class="footer-links">
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="about.html#contacts">Контакты</a></li>
+            <li><a href="about.html#map">Как добраться</a></li>
+            <li><a href="order.html">Оставить заявку</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <h2 class="footer-title">Контакты</h2>
+          <address class="footer-address">г. Москва, ул. Лебедянская, д. 21</address>
+          <ul class="footer-links mb-3">
+            <li><a href="tel:+79169070287">+7 (916) 907-02-87</a></li>
+            <li><a href="mailto:info@questroom.ru">info@questroom.ru</a></li>
+          </ul>
+          <ul class="socials">
+            <li><a href="#" aria-label="ВКонтакте — ссылка-заглушка">ВКонтакте</a></li>
+            <li><a href="#" aria-label="Telegram — ссылка-заглушка">Telegram</a></li>
+            <li><a href="#" aria-label="WhatsApp — ссылка-заглушка">WhatsApp</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>QuestRoom. Все права защищены.</p>
+        <p class="footer-tagline">Не просто квест — твоя история</p>
       </div>
     </div>
   </footer>
-  
-  <button type="button" class="btn btn-primary rounded-circle position-fixed" 
-        id="backToTop" 
-        style="bottom: 24px; right: 24px; width: 48px; height: 48px; display: none; z-index: 1050;"
-        aria-label="Наверх">
+
+  <button type="button" class="position-fixed" id="backToTop" style="bottom: 24px; right: 24px; z-index: 1050;" aria-label="Наверх">
     🧩
   </button>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
 
 </body>

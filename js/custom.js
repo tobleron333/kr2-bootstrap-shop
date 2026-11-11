@@ -1,14 +1,57 @@
+// Принудительный автозапуск карусели в hero-блоке
+const heroCarouselElement = document.getElementById('heroCarousel');
+
+if (heroCarouselElement && window.bootstrap && bootstrap.Carousel) {
+  const heroCarousel = bootstrap.Carousel.getOrCreateInstance(heroCarouselElement, {
+    interval: 4000,
+    pause: false,
+    ride: 'carousel',
+  });
+
+  heroCarousel.cycle();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const backToTop = document.getElementById('backToTop');
   if (!backToTop) return;
 
-  window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-  });
+  const toggleBackToTop = () => {
+    backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  };
+
+  window.addEventListener('scroll', toggleBackToTop);
+  toggleBackToTop();
 
   backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+});
+
+// Ручной ввод для полей «Квест» и «Количество игроков»
+document.querySelectorAll('select[data-custom-target]').forEach((select) => {
+  const target = document.querySelector(select.dataset.customTarget);
+  if (!target) return;
+
+  const customValue = select.dataset.customValue || 'other';
+  const form = select.closest('form');
+
+  const syncCustomField = () => {
+    const isCustom = select.value === customValue;
+    target.classList.toggle('d-none', !isCustom);
+    target.disabled = !isCustom;
+    target.required = isCustom;
+    if (!isCustom) target.value = '';
+  };
+
+  select.addEventListener('change', syncCustomField);
+
+  if (form) {
+    form.addEventListener('reset', () => {
+      window.setTimeout(syncCustomField, 0);
+    });
+  }
+
+  syncCustomField();
 });
 
 const orderForm = document.getElementById('order-form');

@@ -1,66 +1,79 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог квестов - QuestRoom</title>
-  <meta name="description" content="Каталог квестов QuestRoom: хоррор, детектив, космос, побег.">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Каталог квестов — QuestRoom</title>
+  <meta name="description" content="Каталог квестов QuestRoom: хоррор, детектив, космос, экшн и приключения. Фильтры по жанру, сложности, числу игроков и цене.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom.css">
 </head>
-<body class="bg-light">
+<body>
 
-  <!-- Навигация (та же, что в index.html) -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <!-- Шапка -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg site-nav" aria-label="Основная навигация">
+      <div class="container navbar-container">
+
+        <a class="navbar-brand" href="index.html">
+          <img src="images/quest-logo-gold.png" class="brand-logo" alt="" width="36" height="36">
+          <span class="brand-text">
+            <span class="brand-name">QuestRoom</span>
+            <span class="brand-tagline">Не просто квест — твоя история</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">О нас</a></li>
+            <li class="nav-item"><a class="nav-link" href="certificates.html">Сертификаты</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
     <div class="container">
-      <a class="navbar-brand" href="index.html">QuestRoom</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Главная</a></li>
-          <li class="nav-item"><a class="nav-link active" href="catalog.html">Каталог</a></li>
-          <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Дополнительно
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="index.html#about">О нас</a></li>
-              <li><a class="dropdown-item" href="index.html#contacts">Контакты</a></li>
-            </ul>
-          </li>
-        </ul>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Каталог</li>
+        </ol>
+      </nav>
+
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3">
+        <div>
+          <span class="section-kicker">Каталог</span>
+          <h1>Квесты в Москве</h1>
+          <p class="lead">Выберите жанр, сложность и количество игроков — подберём подходящую комнату.</p>
+        </div>
+        <a class="btn btn-outline-primary" href="order.html">Оставить заявку</a>
       </div>
     </div>
-  </nav>
+  </section>
 
-  <main class="container my-5">
-
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Каталог</li>
-      </ol>
-    </nav>
+  <main class="container my-4 my-lg-5">
 
     <div class="alert alert-info" role="alert">
       Выберите квест из каталога. Используйте фильтры, чтобы подобрать подходящий.
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="h2 mb-0">Каталог квестов</h1>
-      <a class="btn btn-outline-primary" href="order.html">Оставить заявку</a>
-    </div>
-
-    <!-- Фильтры -->
     <div class="row g-4">
 
       <!-- ЛЕВАЯ КОЛОНКА: ФИЛЬТР -->
       <div class="col-12 col-lg-3">
-        <div class="catalog-filters card shadow-sm">
+        <div class="catalog-filters card">
           <div class="card-body">
             <h2 class="h5 mb-3">Фильтры</h2>
 
@@ -104,21 +117,21 @@
               <label class="form-label">Цена, руб.</label>
               <div class="d-flex align-items-center gap-2">
                 <label for="filter-price-min" class="form-label mb-0 small text-muted">От</label>
-                <input 
-                  type="number" 
-                  class="form-control form-control-sm" 
-                  id="filter-price-min" 
-                  min="0" 
-                  step="100" 
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  id="filter-price-min"
+                  min="0"
+                  step="100"
                   value="0"
                 >
                 <label for="filter-price-max" class="form-label mb-0 small text-muted">До</label>
-                <input 
-                  type="number" 
-                  class="form-control form-control-sm" 
-                  id="filter-price-max" 
-                  min="0" 
-                  step="100" 
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  id="filter-price-max"
+                  min="0"
+                  step="100"
                   value="4000"
                 >
               </div>
@@ -135,165 +148,232 @@
       <div class="col-12 col-lg-9">
         <div class="row g-4">
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="medium" data-players="2-4" data-genre = "horror" data-price = "2500">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-lab.jpg" class="card-img-top" alt="Побег из лаборатории">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="medium" data-players="2-4" data-genre="horror" data-price="2500">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-lab.jpg" class="card-img-top" alt="Квест «Побег из лаборатории»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
                   <h2 class="card-title h5 mb-0">Побег из лаборатории</h2>
                   <span class="badge bg-success">Новинка</span>
                 </div>
-                <p class="card-text text-muted">Хоррор. Учёный исчез, лаборатория закрыта. 60 минут, 2-4 человека.</p>
-                <p class="fw-bold fs-5 mt-auto">2500 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=lab">Подробнее</a>
+                <p class="card-text text-muted">Хоррор. Учёный исчез, лаборатория закрыта. 60 минут, 2–4 человека.</p>
+                <span class="price mt-auto pt-3">2 500 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=lab">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="medium" data-players="4-6" data-genre = "detective" data-price = "3000">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-mansion.jpg" class="card-img-top" alt="Тайна старого особняка">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="medium" data-players="4-6" data-genre="detective" data-price="3000">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-mansion.jpg" class="card-img-top" alt="Квест «Тайна старого особняка»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
                   <h2 class="card-title h5 mb-0">Тайна старого особняка</h2>
                   <span class="badge bg-warning text-dark">Хит</span>
                 </div>
-                <p class="card-text text-muted">Детектив. Найдите убийцу до полуночи. 70 минут, 4-6 человек.</p>
-                <p class="fw-bold fs-5 mt-auto">3000 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=mansion">Подробнее</a>
+                <p class="card-text text-muted">Детектив. Найдите убийцу до полуночи. 70 минут, 4–6 человек.</p>
+                <span class="price mt-auto pt-3">3 000 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=mansion">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="hard" data-players="2-4" data-genre = "fantasy" data-price = "2800">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-cosmo.jpg" class="card-img-top" alt="Космический рейс">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="hard" data-players="2-4" data-genre="fantasy" data-price="2800">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-cosmo.jpg" class="card-img-top" alt="Квест «Космический рейс»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
                   <h2 class="card-title h5 mb-0">Космический рейс</h2>
                   <span class="badge bg-danger">Скидка</span>
                 </div>
-                <p class="card-text text-muted">Фантастика. Вернитесь на Землю до конца кислорода. 60 минут, 2-5 человек.</p>
-                <p class="fw-bold fs-5 mt-auto">2800 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=cosmo">Подробнее</a>
+                <p class="card-text text-muted">Фантастика. Вернитесь на Землю до конца кислорода. 60 минут, 2–5 человек.</p>
+                <span class="price mt-auto pt-3">2 800 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=cosmo">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="hard" data-players="4-6" data-genre = "horror" data-price = "3200">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-camp.jpg" class="card-img-top" alt="Заброшенный лагерь">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="hard" data-players="4-6" data-genre="horror" data-price="3200">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-camp.jpg" class="card-img-top" alt="Квест «Заброшенный лагерь»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <h2 class="card-title h5 mb-3">Заброшенный лагерь</h2>
-                <p class="card-text text-muted">Хоррор. Ночь в лесу, странные звуки, пропавшие дети. 80 минут, 3-6 человек.</p>
-                <p class="fw-bold fs-5 mt-auto">3200 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=camp">Подробнее</a>
+                <h2 class="card-title h5 mb-2">Заброшенный лагерь</h2>
+                <p class="card-text text-muted">Хоррор. Ночь в лесу, странные звуки, пропавшие дети. 80 минут, 3–6 человек.</p>
+                <span class="price mt-auto pt-3">3 200 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=camp">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="medium" data-players="2-4" data-genre = "action" data-price = "2600">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-bank.jpg" class="card-img-top" alt="Ограбление банка">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="medium" data-players="2-4" data-genre="action" data-price="2600">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-bank.jpg" class="card-img-top" alt="Квест «Ограбление банка»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <h2 class="card-title h5 mb-3">Ограбление банка</h2>
-                <p class="card-text text-muted">Экшн. Проберитесь в хранилище и выйдите до приезда полиции. 60 минут, 2-4 человека.</p>
-                <p class="fw-bold fs-5 mt-auto">2600 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=bank">Подробнее</a>
+                <h2 class="card-title h5 mb-2">Ограбление банка</h2>
+                <p class="card-text text-muted">Экшн. Проберитесь в хранилище и выйдите до приезда полиции. 60 минут, 2–4 человека.</p>
+                <span class="price mt-auto pt-3">2 600 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=bank">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="easy" data-players="2-4" data-genre = "adventure" data-price = "2400">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-island.jpg" class="card-img-top" alt="Пиратский остров">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="easy" data-players="2-4" data-genre="adventure" data-price="2400">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-island.jpg" class="card-img-top" alt="Квест «Пиратский остров»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <h2 class="card-title h5 mb-3">Пиратский остров</h2>
-                <p class="card-text text-muted">Приключение для детей и взрослых. Найдите сокровища. 60 минут, 2-6 человек.</p>
-                <p class="fw-bold fs-5 mt-auto">2400 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=island">Подробнее</a>
+                <h2 class="card-title h5 mb-2">Пиратский остров</h2>
+                <p class="card-text text-muted">Приключение для детей и взрослых. Найдите сокровища. 60 минут, 2–6 человек.</p>
+                <span class="price mt-auto pt-3">2 400 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=island">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="hard" data-players="4-6" data-genre="horror" data-price="3400">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-pharaoh.jpg" class="card-img-top" alt="Проклятие фараона">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="hard" data-players="4-6" data-genre="horror" data-price="3400">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-pharaoh.jpg" class="card-img-top" alt="Квест «Проклятие фараона»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
-                  <h2 class="card-title h5 mb-0">Проклятие фараона</h2>
-                </div>
-                <p class="card-text text-muted">Мистика. Древняя гробница, ловушки и проклятие. 75 минут, 4-6 человек.</p>
-                <p class="fw-bold fs-5 mt-auto">3400 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=pharaoh">Подробнее</a>
+                <h2 class="card-title h5 mb-2">Проклятие фараона</h2>
+                <p class="card-text text-muted">Мистика. Древняя гробница, ловушки и проклятие. 75 минут, 4–6 человек.</p>
+                <span class="price mt-auto pt-3">3 400 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=pharaoh">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="hard" data-players="2-4" data-genre="action" data-price="3100">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-zombie.jpg" class="card-img-top" alt="Зомби-апокалипсис">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="hard" data-players="2-4" data-genre="action" data-price="3100">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-zombie.jpg" class="card-img-top" alt="Квест «Зомби-апокалипсис»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
-                  <h2 class="card-title h5 mb-0">Зомби-апокалипсис</h2>
-                </div>
-                <p class="card-text text-muted">Экшн-хоррор. Выживите в городе, захваченном зомби. 60 минут, 2-4 человека.</p>
-                <p class="fw-bold fs-5 mt-auto">3100 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=zombie">Подробнее</a>
+                <h2 class="card-title h5 mb-2">Зомби-апокалипсис</h2>
+                <p class="card-text text-muted">Экшн-хоррор. Выживите в городе, захваченном зомби. 60 минут, 2–4 человека.</p>
+                <span class="price mt-auto pt-3">3 100 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=zombie">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" data-difficulty="medium" data-players="2-4" data-genre="detective" data-price="2700">
-            <div class="card h-100 shadow-sm">
-              <img src="images/quest-sherlock.jpg" class="card-img-top" alt="Шерлок: дело о пропавшем">
+          <div class="col-12 col-md-6 col-lg-4 d-flex" data-difficulty="medium" data-players="2-4" data-genre="detective" data-price="2700">
+            <div class="card quest-card h-100">
+              <div class="card-img-wrap">
+                <img src="images/quest-sherlock.jpg" class="card-img-top" alt="Квест «Шерлок: дело о пропавшем лорде»">
+              </div>
               <div class="card-body d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
-                  <h2 class="card-title h5 mb-0">Шерлок: дело о пропавшем лорде</h2>
-                </div>
-                <p class="card-text text-muted">Детектив. Лондон, 1895 год. Раскройте дело о пропавшем лорде. 65 минут, 2-4 человека.</p>
-                <p class="fw-bold fs-5 mt-auto">2700 руб.</p>
-                <div class="d-flex gap-2">
-                  <a class="btn btn-primary" href="product.html?id=sherlock">Подробнее</a>
+                <h2 class="card-title h5 mb-2">Шерлок: дело о пропавшем лорде</h2>
+                <p class="card-text text-muted">Детектив. Лондон, 1895 год. Раскройте дело о пропавшем лорде. 65 минут, 2–4 человека.</p>
+                <span class="price mt-auto pt-3">2 700 ₽</span>
+                <div class="d-flex gap-2 mt-3">
+                  <a class="btn btn-primary flex-grow-1" href="product.html?id=sherlock">Подробнее</a>
                   <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">Записаться</button>
                 </div>
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
 
     </div>
   </main>
 
-  <footer class="bg-dark text-white py-4 mt-5">
+  <!-- Подвал -->
+  <footer class="site-footer">
     <div class="container">
-      <p class="mb-0 text-center">&copy; 2026 QuestRoom</p>
+      <div class="row g-4 g-lg-4">
+
+        <div class="col-12 col-lg-4">
+          <a class="footer-brand" href="index.html">
+            <img src="images/quest-logo-gold.png" alt="" width="42" height="42">
+            <span class="brand-name">QuestRoom</span>
+          </a>
+          <p class="footer-slogan">Не просто квест — твоя история</p>
+          <p class="footer-text">
+            Сеть квест-комнат в Москве: девять сценариев, команды от 2 до 6 человек
+            и ведущие, которые знают, когда стоит подсказать.
+          </p>
+          <a class="btn btn-primary" href="order.html">Оставить заявку</a>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2 class="footer-title">Квесты</h2>
+          <ul class="footer-links">
+            <li><a href="catalog.html">Все квесты</a></li>
+            <li><a href="index.html#popular">Популярные</a></li>
+            <li><a href="certificates.html">Сертификаты</a></li>
+            <li><a href="about.html">О нас</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h2 class="footer-title">Информация</h2>
+          <ul class="footer-links">
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="about.html#contacts">Контакты</a></li>
+            <li><a href="about.html#map">Как добраться</a></li>
+            <li><a href="order.html">Оставить заявку</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <h2 class="footer-title">Контакты</h2>
+          <address class="footer-address">г. Москва, ул. Лебедянская, д. 21</address>
+          <ul class="footer-links mb-3">
+            <li><a href="tel:+79169070287">+7 (916) 907-02-87</a></li>
+            <li><a href="mailto:info@questroom.ru">info@questroom.ru</a></li>
+          </ul>
+          <ul class="socials">
+            <li><a href="#" aria-label="ВКонтакте — ссылка-заглушка">ВКонтакте</a></li>
+            <li><a href="#" aria-label="Telegram — ссылка-заглушка">Telegram</a></li>
+            <li><a href="#" aria-label="WhatsApp — ссылка-заглушка">WhatsApp</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>QuestRoom. Все права защищены.</p>
+        <p class="footer-tagline">Не просто квест — твоя история</p>
+      </div>
     </div>
   </footer>
 
@@ -327,11 +407,11 @@
                 <label for="modal-phone" class="form-label">Телефон *</label>
                 <div class="input-group">
                   <span class="input-group-text">+7</span>
-                  <input 
-                    id="modal-phone" 
-                    name="phone" 
-                    type="tel" 
-                    class="form-control" 
+                  <input
+                    id="modal-phone"
+                    name="phone"
+                    type="tel"
+                    class="form-control"
                     placeholder="900 000-00-00"
                     pattern="\d{3}\s?\d{3}-?\d{2}-?\d{2}"
                     maxlength="14"
@@ -343,15 +423,28 @@
 
               <div class="col-12 col-md-6">
                 <label for="modal-quest" class="form-label">Квест</label>
-                <select id="modal-quest" name="quest" class="form-select">
+                <select id="modal-quest" name="quest" class="form-select" data-custom-target="#modal-quest-custom">
                   <option selected>Выберите квест</option>
                   <option value="lab">Побег из лаборатории</option>
                   <option value="mansion">Тайна старого особняка</option>
-                  <option value="space">Космический рейс</option>
+                  <option value="cosmo">Космический рейс</option>
                   <option value="camp">Заброшенный лагерь</option>
                   <option value="bank">Ограбление банка</option>
-                  <option value="pirate">Пиратский остров</option>
+                  <option value="island">Пиратский остров</option>
+                  <option value="pharaoh">Проклятие фараона</option>
+                  <option value="zombie">Зомби-апокалипсис</option>
+                  <option value="sherlock">Шерлок: дело о пропавшем лорде</option>
+                  <option value="other">Другой квест…</option>
                 </select>
+                <input
+                  id="modal-quest-custom"
+                  name="quest_custom"
+                  type="text"
+                  class="form-control mt-2 d-none"
+                  placeholder="Введите название квеста"
+                  aria-label="Свой вариант квеста"
+                >
+                <div class="invalid-feedback">Укажите название квеста</div>
               </div>
 
               <div class="col-12 col-md-6">
@@ -361,13 +454,26 @@
 
               <div class="col-12 col-md-6">
                 <label for="modal-players" class="form-label">Количество игроков</label>
-                <select id="modal-players" name="players" class="form-select">
+                <select id="modal-players" name="players" class="form-select" data-custom-target="#modal-players-custom">
                   <option selected>2</option>
                   <option>3</option>
                   <option>4</option>
                   <option>5</option>
                   <option>6</option>
+                  <option value="other">Другое количество</option>
                 </select>
+                <input
+                  id="modal-players-custom"
+                  name="players_custom"
+                  type="number"
+                  class="form-control mt-2 d-none"
+                  min="1"
+                  max="30"
+                  inputmode="numeric"
+                  placeholder="Введите количество игроков"
+                  aria-label="Своё количество игроков"
+                >
+                <div class="invalid-feedback">Введите число от 1 до 30</div>
               </div>
 
               <div class="col-12">
@@ -394,16 +500,13 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary rounded-circle position-fixed" 
-        id="backToTop" 
-        style="bottom: 24px; right: 24px; width: 48px; height: 48px; display: none; z-index: 1050;"
-        aria-label="Наверх">
+  <button type="button" class="position-fixed" id="backToTop" style="bottom: 24px; right: 24px; z-index: 1050;" aria-label="Наверх">
     🧩
   </button>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="js/filter.js"></script>
 
 </body>
-</html>  
+</html>
