@@ -36,3 +36,13 @@ body {
   object-fit: cover;
   object-position: center;
 }
+
+#backToTop {
+  background-color: #6f42c1 !important;
+  border-color: #6f42c1 !important;
+}
+
+#backToTop:hover {
+  background-color: #5a35a0 !important;
+  border-color: #5a35a0 !important;
+}
