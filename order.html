@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Заявка на квест — QuestRoom</title>
-  <meta name="description" content="Оставьте заявку на прохождение квеста в QuestRoom: выберите квест, дату и количество игроков.">
+  <title>Бронирование квеста — QuestRoom</title>
+  <meta name="description" content="Забронируйте квест в QuestRoom: выберите дату, свободное время и количество игроков.">
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('qr_theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        }
+      } catch (error) { /* localStorage недоступен */ }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
@@ -26,9 +36,30 @@
           </span>
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="nav-actions">
+          <a class="nav-icon-link" href="account.html" aria-label="Личный кабинет" title="Личный кабинет">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.2"></circle>
+              <path d="M5.5 19c.8-3.2 3.3-5 6.5-5s5.7 1.8 6.5 5"></path>
+            </svg>
+          </a>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Включить светлую тему" aria-pressed="false" title="Включить светлую тему">
+            <span class="theme-toggle__icon theme-toggle__sun" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+              </svg>
+            </span>
+            <span class="theme-toggle__icon theme-toggle__moon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path>
+              </svg>
+            </span>
+          </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
 
         <div class="collapse navbar-collapse" id="mainNavbar">
           <ul class="navbar-nav">
@@ -48,139 +79,176 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Заявка</li>
+          <li class="breadcrumb-item active" aria-current="page">Бронирование</li>
         </ol>
       </nav>
 
       <span class="section-kicker">Бронирование</span>
-      <h1>Оставить заявку</h1>
-      <p class="lead">Выберите квест и удобное время — менеджер перезвонит и подтвердит бронь.</p>
+      <h1>Забронировать квест</h1>
+      <p class="lead">Выберите квест, дату и свободное время. Стоимость пересчитается автоматически.</p>
     </div>
   </section>
 
   <main class="container my-4 my-lg-5">
+    <div class="row g-4 g-lg-5">
 
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-8">
-        <div class="card shadow-sm">
-          <div class="card-body p-4 p-lg-5">
-            <div class="alert alert-info" role="alert">
-              Заполните форму. Поля со звёздочкой обязательны.
+      <div class="col-12 col-lg-7">
+        <form id="booking-form" novalidate>
+
+          <div id="booking-error" class="alert alert-warning" role="alert" hidden></div>
+
+          <section class="booking-card">
+            <h2 class="booking-step-title"><span class="booking-step-number">01</span> Квест и время</h2>
+
+            <div class="mb-3">
+              <label for="booking-quest" class="form-label">Квест</label>
+              <select id="booking-quest" name="quest" class="form-select" data-custom-target="#booking-quest-custom">
+                <option value="">Выберите квест</option>
+              </select>
+              <input
+                id="booking-quest-custom"
+                name="quest_custom"
+                type="text"
+                class="form-control mt-2 d-none"
+                placeholder="Введите название квеста"
+                aria-label="Свой вариант квеста"
+              >
+              <div class="invalid-feedback">Укажите название квеста</div>
             </div>
 
-            <form id="order-form" novalidate>
-              <div class="row g-3">
+            <div class="mb-3">
+              <label for="booking-date" class="form-label">Дата</label>
+              <input id="booking-date" name="date" type="date" class="form-control" required>
+            </div>
 
-                <div class="col-12 col-md-6">
-                  <label for="order-name" class="form-label">Имя *</label>
-                  <input id="order-name" name="name" type="text" class="form-control" required>
-                </div>
+            <div>
+              <span class="form-label d-block">Свободное время</span>
+              <div id="booking-slots" class="slot-grid" aria-live="polite"></div>
+            </div>
+          </section>
 
-                <div class="col-12 col-md-6">
-                  <label for="order-email" class="form-label">E-mail *</label>
-                  <input id="order-email" name="email" type="email" class="form-control" required>
-                </div>
+          <section class="booking-card">
+            <h2 class="booking-step-title"><span class="booking-step-number">02</span> Игроки</h2>
 
-                <div class="col-12 col-md-6">
-                  <label for="order-phone" class="form-label">Телефон *</label>
-                  <div class="input-group">
-                    <span class="input-group-text">+7</span>
-                    <input
-                      id="order-phone"
-                      name="phone"
-                      type="tel"
-                      class="form-control"
-                      placeholder="900 000-00-00"
-                      pattern="\d{3}\s?\d{3}-?\d{2}-?\d{2}"
-                      maxlength="14"
-                      required
-                    >
-                  </div>
-                  <div class="invalid-feedback">
-                    Введите телефон в формате 900 000-00-00
-                  </div>
-                </div>
+            <label for="booking-players" class="form-label">Количество игроков</label>
+            <select id="booking-players" name="players" class="form-select" data-custom-target="#booking-players-custom">
+              <option value="2">2</option>
+            </select>
+            <input
+              id="booking-players-custom"
+              name="players_custom"
+              type="number"
+              class="form-control mt-2 d-none"
+              min="1"
+              max="30"
+              inputmode="numeric"
+              placeholder="Введите количество игроков"
+              aria-label="Своё количество игроков"
+            >
+            <div class="field-hint">Для больших компаний выберите «Другое количество» — менеджер уточнит условия.</div>
+            <div class="invalid-feedback">Введите число от 1 до 30</div>
+          </section>
 
-                <div class="col-12 col-md-6">
-                  <label for="order-quest" class="form-label">Квест</label>
-                  <select id="order-quest" name="quest" class="form-select" data-custom-target="#order-quest-custom">
-                    <option selected>Выберите квест</option>
-                    <option value="lab">Побег из лаборатории</option>
-                    <option value="mansion">Тайна старого особняка</option>
-                    <option value="cosmo">Космический рейс</option>
-                    <option value="camp">Заброшенный лагерь</option>
-                    <option value="bank">Ограбление банка</option>
-                    <option value="island">Пиратский остров</option>
-                    <option value="pharaoh">Проклятие фараона</option>
-                    <option value="zombie">Зомби-апокалипсис</option>
-                    <option value="sherlock">Шерлок: дело о пропавшем лорде</option>
-                    <option value="other">Другой квест…</option>
-                  </select>
-                  <input
-                    id="order-quest-custom"
-                    name="quest_custom"
-                    type="text"
-                    class="form-control mt-2 d-none"
-                    placeholder="Введите название квеста"
-                    aria-label="Свой вариант квеста"
-                  >
-                  <div class="invalid-feedback">Укажите название квеста</div>
-                </div>
+          <section class="booking-card">
+            <h2 class="booking-step-title"><span class="booking-step-number">03</span> Контакты</h2>
 
-                <div class="col-12 col-md-6">
-                  <label for="order-date" class="form-label">Дата</label>
-                  <input id="order-date" name="date" type="date" class="form-control">
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label for="order-players" class="form-label">Количество игроков</label>
-                  <select id="order-players" name="players" class="form-select" data-custom-target="#order-players-custom">
-                    <option selected>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option value="other">Другое количество</option>
-                  </select>
-                  <input
-                    id="order-players-custom"
-                    name="players_custom"
-                    type="number"
-                    class="form-control mt-2 d-none"
-                    min="1"
-                    max="30"
-                    inputmode="numeric"
-                    placeholder="Введите количество игроков"
-                    aria-label="Своё количество игроков"
-                  >
-                  <div class="invalid-feedback">Введите число от 1 до 30</div>
-                </div>
-
-                <div class="col-12">
-                  <label for="order-comment" class="form-label">Комментарий</label>
-                  <textarea id="order-comment" name="comment" class="form-control" rows="4"></textarea>
-                </div>
-
-                <div class="col-12">
-                  <div class="form-check">
-                    <input id="order-agree" class="form-check-input" type="checkbox" required>
-                    <label class="form-check-label" for="order-agree">Я согласен на обработку данных *</label>
-                  </div>
-                </div>
-
-                <div class="col-12 d-flex flex-wrap gap-2 pt-2">
-                  <button class="btn btn-primary" type="submit">Отправить заявку</button>
-                  <button class="btn btn-outline-secondary" type="reset">Очистить</button>
-                </div>
-
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label for="booking-name" class="form-label">Имя *</label>
+                <input id="booking-name" name="name" type="text" class="form-control" required>
+                <div class="invalid-feedback">Введите имя</div>
               </div>
-            </form>
 
+              <div class="col-12 col-md-6">
+                <label for="booking-phone" class="form-label">Телефон *</label>
+                <div class="input-group">
+                  <span class="input-group-text">+7</span>
+                  <input
+                    id="booking-phone"
+                    name="phone"
+                    type="tel"
+                    class="form-control"
+                    placeholder="900 000-00-00"
+                    pattern="\d{3}\s?\d{3}-?\d{2}-?\d{2}"
+                    maxlength="14"
+                    required
+                  >
+                </div>
+                <div class="invalid-feedback">Введите телефон в формате 900 000-00-00</div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="booking-email" class="form-label">E-mail *</label>
+                <input id="booking-email" name="email" type="email" class="form-control" required>
+                <div class="invalid-feedback">Введите корректный e-mail</div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="booking-comment" class="form-label">Комментарий</label>
+                <textarea id="booking-comment" name="comment" class="form-control" rows="2"></textarea>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check">
+                  <input id="booking-agree" name="agree" class="form-check-input" type="checkbox" required>
+                  <label class="form-check-label" for="booking-agree">Я согласен на обработку данных *</label>
+                  <div class="invalid-feedback">Подтвердите согласие</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="d-flex flex-wrap align-items-center gap-2 mt-3">
+            <button id="booking-submit" class="btn btn-primary btn-lg" type="submit" disabled>Забронировать</button>
+            <a class="btn btn-outline-secondary" href="catalog.html">Вернуться в каталог</a>
           </div>
+        </form>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <aside class="booking-summary" aria-label="Итог бронирования">
+          <div class="booking-summary__head">
+            <h2>Ваша бронь</h2>
+          </div>
+
+          <div class="summary-row"><span>Квест</span><strong id="summary-quest">—</strong></div>
+          <div class="summary-row"><span>Дата</span><strong id="summary-date">—</strong></div>
+          <div class="summary-row"><span>Время</span><strong id="summary-time">—</strong></div>
+          <div class="summary-row"><span>Игроки</span><strong id="summary-players">—</strong></div>
+
+          <div class="summary-total"><span>Итого</span><strong id="summary-total">—</strong></div>
+
+          <p class="booking-summary__note" id="booking-price-note">Цена за команду. За игроков сверх четырёх — +300 ₽ за каждого.</p>
+          <p class="booking-summary__note">Бронь сохраняется в этом браузере. Оплата на месте или по подарочному сертификату.</p>
+
+          <a class="link-accent mt-2" href="account.html">Перейти в личный кабинет <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Подтверждение -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="bookingModalLabel">Бронь оформлена</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted">Спасибо! Мы сохранили вашу бронь. Номер для связи с администратором:</p>
+          <div class="booking-success__code" id="booking-code">QR-000000</div>
+          <p class="mb-1" id="booking-modal-details"></p>
+          <p class="mb-0">Итого: <strong id="booking-modal-total"></strong></p>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-outline-secondary" href="catalog.html">В каталог</a>
+          <a class="btn btn-primary" href="account.html">Мои брони</a>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <!-- Подвал -->
   <footer class="site-footer">
@@ -197,13 +265,14 @@
             Сеть квест-комнат в Москве: девять сценариев, команды от 2 до 6 человек
             и ведущие, которые знают, когда стоит подсказать.
           </p>
-          <a class="btn btn-primary" href="order.html">Оставить заявку</a>
+          <a class="btn btn-primary" href="order.html">Забронировать</a>
         </div>
 
         <div class="col-6 col-lg-2">
           <h2 class="footer-title">Квесты</h2>
           <ul class="footer-links">
             <li><a href="catalog.html">Все квесты</a></li>
+            <li><a href="quiz.html">Подбор квеста</a></li>
             <li><a href="index.html#popular">Популярные</a></li>
             <li><a href="certificates.html">Сертификаты</a></li>
             <li><a href="about.html">О нас</a></li>
@@ -216,21 +285,23 @@
             <li><a href="about.html">О компании</a></li>
             <li><a href="about.html#contacts">Контакты</a></li>
             <li><a href="about.html#map">Как добраться</a></li>
-            <li><a href="order.html">Оставить заявку</a></li>
+            <li><a href="account.html">Личный кабинет</a></li>
+            <li><a href="order.html">Забронировать</a></li>
           </ul>
         </div>
 
         <div class="col-12 col-lg-3">
           <h2 class="footer-title">Контакты</h2>
-          <address class="footer-address">г. Москва, ул. Лебедянская, д. 21</address>
+          <address class="footer-address"><span class="footer-contact-emoji" aria-hidden="true">📍</span>г. Москва, ул. Лебедянская, д. 21</address>
           <ul class="footer-links mb-3">
-            <li><a href="tel:+79169070287">+7 (916) 907-02-87</a></li>
-            <li><a href="mailto:info@questroom.ru">info@questroom.ru</a></li>
+            <li><a href="tel:+79169070287"><span class="footer-contact-emoji" aria-hidden="true">📞</span>+7 (916) 907-02-87</a></li>
+            <li class="footer-hours">Ежедневно, 10:00–22:00</li>
+            <li><a href="mailto:info@questroom.ru"><span class="footer-contact-emoji" aria-hidden="true">📬</span>info@questroom.ru</a></li>
           </ul>
           <ul class="socials">
-            <li><a href="#" aria-label="ВКонтакте — ссылка-заглушка">ВКонтакте</a></li>
-            <li><a href="#" aria-label="Telegram — ссылка-заглушка">Telegram</a></li>
-            <li><a href="#" aria-label="WhatsApp — ссылка-заглушка">WhatsApp</a></li>
+            <li><a href="#" aria-label="ВКонтакте" title="ВКонтакте"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.808 0 1.126-.26 1.126-.668 0-.613-.678-1.503-1.651-2.475-.857-.857-1.518-1.363-1.518-1.911 0-.474.291-.732.744-1.268 1.11-1.315 2.42-2.944 2.42-4.443 0-.871-.438-1.235-1.25-1.25h-3.2c-.716 0-1.043.375-1.22.795 0 0-1.433 3.484-3.463 5.748-.657.657-.956.866-1.315.866-.188 0-.469-.211-.469-.817V7.619c0-.75-.219-1.078-.844-1.078H9.843c-.469 0-.75.344-.75.672 0 .708 1.063.871 1.172 2.86v4.309c0 .93-.169 1.098-.528 1.098-.963 0-3.303-3.525-4.692-7.564-.272-.789-.544-1.11-1.263-1.11H1.582c-.797 0-.956.375-.956.795 0 .779 1.02 4.628 4.743 9.723 2.478 3.55 5.972 5.47 9.153 5.47h3.64z"/></svg></a></li>
+            <li><a href="#" aria-label="Telegram" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></li>
+            <li><a href="#" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a></li>
           </ul>
         </div>
 
@@ -247,7 +318,12 @@
     🧩
   </button>
 
+  <script src="js/quests.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/theme.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
+  <script src="js/booking.js"></script>
+
 </body>
 </html>
