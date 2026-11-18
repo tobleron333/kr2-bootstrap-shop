@@ -2730,3 +2730,61 @@ html[data-bs-theme="light"] {
 [data-bs-theme="light"] .about-media::after {
   background: linear-gradient(180deg, transparent 45%, rgba(30, 24, 12, 0.7));
 }
+
+/* --------------------------------------------------------------------------
+   Плавная смена темы
+   -------------------------------------------------------------------------- */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: ease-in-out;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation-name: qr-theme-fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: qr-theme-fade-in;
+}
+
+@keyframes qr-theme-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes qr-theme-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Фолбэк для браузеров без View Transitions API */
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition-property: background-color, color, border-color, fill, stroke, box-shadow, transform, opacity !important;
+  transition-duration: 0.42s !important;
+  transition-timing-function: ease !important;
+}
+
+/* Во время view-transition иконка сразу меняется в новом снимке и плавно кроссфейдится */
+html.theme-instant-icon .theme-toggle__icon {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
